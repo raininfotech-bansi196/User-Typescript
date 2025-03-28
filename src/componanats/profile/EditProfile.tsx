@@ -8,7 +8,6 @@ import Select from "react-select";
 
 const EditProfile = () => {
   const { userDetails, setAuthTkn } = useAuthContext();
-  console.log({ userDetails });
   const [initialData, setInitialData] = useState({
     email: '',
     userName: '',
@@ -55,10 +54,8 @@ const EditProfile = () => {
     getCountryData();
   }, [])
   const handleGetStateData = async (country: string) => {
-    console.log({ country });
     try {
       const response = await fetchApi('/get-state-data', JSON.stringify({ country: country }), "POST");
-      console.log({ response });
       setStateData(response?.data?.data.map((x: any) => ({ label: x?.stateName, value: x?.stateName })))
     } catch (error) {
       console.log({ error });
@@ -88,7 +85,6 @@ const EditProfile = () => {
       console.log({ error });
     }
   }
-  console.log(initialData, "initialData?.country");
   useEffect(() => {
     handleGetStateData(initialData?.country)
   }, [initialData?.country])

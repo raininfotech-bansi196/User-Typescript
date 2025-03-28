@@ -1,5 +1,6 @@
 import moment from "moment";
 import crypto from "crypto";
+import toast from "react-hot-toast";
 export function validate_string(data: string, prefix: string, type = 0) {
     if (!data || data.trim() == "") {
         let pre = type == 0 ? 'Enter ' : ' Select '
@@ -117,3 +118,41 @@ export function chk_confirm_password(pwd: string, cpwd: string, errorMsg: string
         throw errorMsg
     }
 }
+
+export const shortenAddress = (address: string) => {
+    if (!address || address.length < 10) return address;
+    return `${address.substring(0, 6)}...${address.substring(address.length - 5)}`;
+};
+
+export const copyAddress = (address: string) => {
+    navigator.clipboard.writeText(address);
+    toast.success("Copied to clipboard");
+};
+export const validatePositiveNumber = (num: string, prefix: string) => {
+    const numberRegex = /^[1-9]\d*$/;
+    if (num === "0") {
+        throw prefix + " should be greater than 0"
+    } else if (!numberRegex.test(num)) {
+        throw "Invalid " + prefix
+    }
+};
+export const validateContractAddress = (address: string) => {
+    // const contractRegex = /^0x[a-fA-F0-9]{40}$/;
+    // if (!contractRegex.test(address)) {
+    //     throw "Invalid Contract Address"
+    // }
+    const patterns = {
+        ethereum: /^0x[a-fA-F0-9]{40}$/,  // Ethereum, BSC, Polygon (EVM-based)
+        bitcoin: /^(1|3|bc1)[a-zA-HJ-NP-Z0-9]{25,42}$/,  // Bitcoin (Legacy, SegWit)
+        solana: /^[1-9A-HJ-NP-Za-km-z]{32,44}$/,  // Solana (Base58)
+        tron: /^T[a-zA-Z0-9]{33}$/,  // Tron (Starts with 'T', 34 chars)
+        ripple: /^r[1-9A-HJ-NP-Za-km-z]{24,34}$/  // XRP (Starts with 'r', 25-35 chars)
+    };
+
+    for (const [blockchain, regex] of Object.entries(patterns)) {
+        if (regex.test(address)) {
+            return { valid: true, blockchain };
+        }
+    }
+    throw "Invalid Contract Address"
+};

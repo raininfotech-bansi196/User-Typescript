@@ -241,7 +241,7 @@ ol {
 }
 
 .site-btn.sb-gradients.sbg-line:hover {
-	color: #3e2bce !important;
+	color: #20509e !important;
 }
 
 /* Image Popup */
@@ -849,7 +849,7 @@ ol {
   Blog Section
 -----------------------*/
 
-.blog-section {
+footer {
 	background: #f3f7f9;
 }
 
@@ -2321,4 +2321,203 @@ input:disabled {
 	100% {
 		background-position: 100% 100%, 0 0, 0 100%
 	}
+}
+
+.btn-close {
+	width: 35px;
+	height: 35px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	outline: none !important;
+	border: none !important;
+	background-color: transparent !important;
+	font-size: 20px;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: all 0.2s;
+	color: #20509e;
+	background-color: #fff !important;
+}
+
+.btn-close:hover {
+	transform: scaleY(-1);
+}
+
+.modal-content {
+	border-radius: 25px !important;
+	border: none !important;
+	background-color: #f3f7f9 !important;
+}
+
+.site-btn.site-btn-sm {
+	min-width: auto !important;
+	padding: 15px 30px !important;
+	font-size: 14px !important;
+}
+
+.modal-header,
+.modal-footer {
+	border-color: #cdcdcd !important;
+}
+
+.table {
+	background-color: #fff;
+}
+
+.table-bordered thead td,
+.table-bordered thead th {
+	border-bottom-width: 1px !important;
+}
+
+.table-bordered td,
+.table-bordered th {
+	border-top: none !important;
+	border: none !important;
+	border-left: 1px solid #dee2e6 !important;
+	padding: 15px !important;
+	text-wrap: nowrap	;
+}
+
+.table-bordered td:first-child,
+.table-bordered th:first-child {
+	border: none !important;
+}
+
+thead {
+	border-bottom: 1px solid #dee2e6 !important;
+}
+
+.table-responsive,.cust-card {
+	border-radius: 15px !important;
+	/* overflow: hidden; */
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 5px 15px;
+}
+
+.table-hover tbody tr:hover {
+	background-color: #f9f9f9 !important;
+}
+
+.table thead th {
+	text-transform: uppercase;
+	font-size: 14px;
+	text-wrap: nowrap;
+}
+
+.sort-enable {
+	color: #20509e !important;
+}
+
+th.sort {
+	cursor: pointer !important;
+	user-select: none !important;
+}
+.nodata {
+	width: auto !important;
+	height: 200px !important;
+	margin: 30px 0 !important;
+  }
+
+  .paginationBox {
+	margin-top: 24px;
+  }
+  
+  .pagination {
+	gap: 10px;
+	margin-bottom: 0 !important;
+  }
+  
+  .page-link {
+	padding: 0;
+	width: 40px;
+	height: 40px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	outline: none !important;
+	border-radius: 8px;
+	border-color: #CED4DA !important;
+	color: #000 !important;
+  }
+  
+  .page-indicator .page-link {
+	border-radius: 8px !important;
+	border-color: #CED4DA !important;
+	box-shadow: none !important;
+	outline: none !important;
+	color: #6C7383 !important;
+  }
+  
+  .page-link.active,
+  .active>.page-link {
+	background-color: #4c49ac !important;
+	box-shadow: none !important;
+	outline: none !important;
+	border-color: #4c49ac !important;
+	color: #fff !important;
+  }
+  
+  .page-indicator.disabled .page-link {
+	background-color: transparent !important;
+	opacity: 0.7 !important;
+	user-select: none;
+  }
+  
+.tblloader {
+	margin: 100px 0 !important;
+	width: 45px;
+	height: 45px;
+	border-width: 4px;
+}
+
+.sort-disable {
+	color: #bcbcbc !important;
+}
+
+.table .sort span {
+	display: inline-block;
+	margin-left: 8px;
+}
+.list-filter.contact-form input:not(.react-select input){
+	border: 1px solid #dee2e6 !important;
+	padding: 10px 20px !important;
+	font-size: 15px !important;
+	color: #222 !important;
+}	
+.list-filter.contact-form input:focus:not(.react-select input){
+	border-color: #20509e !important;
+}
+.list-filter.contact-form label{
+	font-size: 14px !important;
+}
+.address-link,
+.address-link:hover,
+.address-link:focus {
+	color: #20509e;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.address-copy{
+	color: #b2b4b5;
+	font-size: 14px ;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	transition: all 0.2s;
+	margin-left: 10px;
+}
+.address-copy:hover{
+	color: #20509e;
+}
+.profile-sidebar,.profile-details{
+	border-radius: 20px !important;
+	overflow: hidden !important;
+}
+.badge{
+	font-size: 12px !important;
+	padding: 5px 10px !important;
+	letter-spacing: 0.5px !important;
+	font-weight: 600 !important;
 }

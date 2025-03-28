@@ -1,40 +1,12 @@
 "use client";
 import { createWeb3Modal, defaultConfig } from "@web3modal/ethers/react";
 import { Toaster } from "react-hot-toast";
-
+import NextNProgress from "nextjs-progressbar";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
-  // const projectId = process.env.WALLET_CONNECT_ID || "";
-  // const chainId = process.env.CHAINID ? parseInt(process.env.CHAINID) : 11155111; // Default to Sepolia Testnet
-  // const rpcUrl = process.env.RPCURL || "https://sepolia.infura.io/v3/YOUR_INFURA_KEY";
-
-  // const chain = [
-  //   {
-  //     chainId,
-  //     name: process.env.CHAINNAME || "Ethereum Sepolia",
-  //     currency: process.env.CURRENCY || "ETH",
-  //     explorerUrl: process.env.EXPLORER_URL || "https://sepolia.etherscan.io",
-  //     rpcUrl,
-  //   },
-  // ];
-
-  // const metadata = {
-  //   name: process.env.SITENAME || "MyDApp Testnet",
-  //   description: "Testnet Wallet Connection using Web3Modal",
-  //   url: process.env.BASE_URL || "https://mytestdapp.com",
-  //   icons: [`${process.env.BASE_URL || "https://mytestdapp.com"}/next.svg`],
-  // };
-
-  // const ethersConfig = defaultConfig({ metadata });
-
-  // createWeb3Modal({
-  //   ethersConfig,
-  //   chains: chain,
-  //   projectId,
-  //   enableAnalytics: true,
-  // });
-
   const projectId = process.env.WALLET_CONNECT_ID || ""
   interface Chain {
     chainId: number;
@@ -75,7 +47,12 @@ export default function RootLayout({
     projectId,
     enableAnalytics: true
   })
+  const pathname = usePathname(); // Detects route changes
+  const [key, setKey] = useState(0); // Forces re-render of NextNProgress
 
+  useEffect(() => {
+    setKey((prevKey) => prevKey + 1); // Forces NextNProgress to reset on route change
+  }, [pathname]);
   return (
     <html lang="en">
       <head>
@@ -96,10 +73,16 @@ export default function RootLayout({
       </head>
       <body>
         <Toaster position="top-right" />
+        <NextNProgress
+          key={key}
+          color="#29D"
+          startPosition={0.3}
+          stopDelayMs={200}
+          height={10}
+          showOnShallow={true}
+        />
         {children}
-        <script src="/js/jquery-3.2.1.min.js"></script>
-        <script src="/js/bootstrap.min.js"></script>
-        <script src="/js/main.js"></script>
+        {/* <script src="/js/bootstrap.min.js"></script> */}
       </body>
     </html>
   );

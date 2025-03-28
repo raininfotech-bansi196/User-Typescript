@@ -17,9 +17,9 @@ const Header = () => {
   return (
     <header className="header-section clearfix">
       <div className="container-fluid">
-        <a href="index.html" className="site-logo">
+        <Link href="/" className="site-logo">
           <img src="img/logo.png" alt="" />
-        </a>
+        </Link>
         <div className="responsive-bar">
           <i className="fa fa-bars" />
         </div>
@@ -44,10 +44,13 @@ const Header = () => {
               <Link href="/profile">Profile</Link>
             </li>
             <li>
-              <Link href="/about">About</Link>
+              <Link href="/dashboard/wallets">Dashboard</Link>
             </li>
+            {/* <li>
+              <Link href="/about">About</Link>
+            </li> */}
             <li>
-              <a href="">Contact</a>
+              <Link href="/withdrawal">Withdrawal</Link>
             </li>
           </ul>
         </nav>

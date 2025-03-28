@@ -1,4 +1,5 @@
 "use client"
+import GenerateWallet from "@/componanats/wallet/GenerateWallet";
 import { useAuthContext } from "@/context/auth";
 import { useWeb3Modal, useWeb3ModalAccount } from "@web3modal/ethers/react";
 import Link from "next/link";
@@ -17,6 +18,10 @@ export default function Home() {
   useEffect(() => {
     setPageLoader(false)
   }, [])
+  const[isCreateWallet,setIsCreateWallet] = useState(false);
+  const handleClose = () => {
+    setIsCreateWallet(false)
+  }
   return (
     <>
       {/* Hero section */}
@@ -48,20 +53,16 @@ export default function Home() {
         <div className="container">
           <div className="row">
             <div className="col-lg-6 offset-lg-6 about-text">
-              <h2>What is Bitcoin</h2>
-              <h5>
-                Bitcoin is an innovative payment network and a new kind of money.
-              </h5>
+              <h2>Create Your Secure Crypto Wallet</h2>
               <p>
-                Bitcoin is one of the most important inventions in all of human
-                history. For the first time ever, anyone can send or receive any
-                amount of money with anyone else, anywhere on the planet,
-                conveniently and without restriction. It’s the dawn of a better,
-                more free world.
+                Unlock the power of decentralized finance with your own web3 wallet.
               </p>
-              <a href="" className="site-btn sb-gradients sbg-line mt-5">
-                Get Started
-              </a>
+              <p>
+                Generate your own Web3-enabled crypto wallet in seconds. Securely store, send, and receive cryptocurrencies across multiple blockchains. Experience true financial freedom with a non-custodial wallet that puts you in control. Start your journey in the decentralized world today!
+              </p>
+              <button onClick={() => setIsCreateWallet(true)} className="site-btn sb-gradients sbg-line mt-5">
+                Create wallet
+              </button>
             </div>
           </div>
           <div className="about-img">
@@ -446,6 +447,7 @@ export default function Home() {
         </div>
       </section>
       {/* Blog section end */}
+      <GenerateWallet isCreateWallet={isCreateWallet} handleClose={handleClose}/>
     </>
   );
 }
